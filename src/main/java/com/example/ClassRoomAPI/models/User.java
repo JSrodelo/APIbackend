@@ -1,7 +1,7 @@
 package com.example.ClassRoomAPI.models;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.example.ClassRoomAPI.helper.UserType;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -12,30 +12,35 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_user")
     private Integer id;
-    @Column(name = "name", length = 100, nullable = false)
+
+    @Column(name = "name", nullable = false, length = 100)
     private String name;
-    @Column(name = "email", length = 150, unique = true, nullable = false)
+
+    @Column(name = "email", nullable = false, length = 150, unique = true)
     private String email;
-    @Column(name = "password", length = 255, nullable = false)
+
+    @Column(name = "password", nullable = false, length = 255)
     private String password;
-    @Column(name = "phone", length = 20, nullable = true)
+
+    @Column(name = "phone", length = 20)
     private String phone;
+
     @Column(name = "user_type", nullable = false)
     private UserType userType;
 
-    //Creating relationship with student (1 to 1)
     @OneToOne(mappedBy = "user")
     @JsonManagedReference
     private Student student;
 
-    //Creating relationship with teacher (1 to 1)
     @OneToOne(mappedBy = "user")
     @JsonManagedReference
     private Teacher teacher;
 
+    // Constructor vacío
     public User() {
     }
 
+    // Constructor con parámetros
     public User(Integer id, String name, String email, String password, String phone, UserType userType) {
         this.id = id;
         this.name = name;
@@ -45,6 +50,7 @@ public class User {
         this.userType = userType;
     }
 
+    // Getters y setters
     public Integer getId() {
         return id;
     }
@@ -91,5 +97,21 @@ public class User {
 
     public void setUserType(UserType userType) {
         this.userType = userType;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
     }
 }

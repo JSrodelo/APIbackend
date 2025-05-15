@@ -1,16 +1,13 @@
 package com.example.ClassRoomAPI.services;
 
 import com.example.ClassRoomAPI.helper.APIMessages;
-import com.example.ClassRoomAPI.models.Course;
 import com.example.ClassRoomAPI.models.Student;
-import com.example.ClassRoomAPI.models.Subject;
-import com.example.ClassRoomAPI.models.Teacher;
 import com.example.ClassRoomAPI.repository.IStudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 import java.util.Optional;
 
-public class StudentRepository {
+public class StudentService {
 
     @Autowired
     IStudentRepository repository;

@@ -51,7 +51,7 @@ public class SubjectService {
         try {
             Optional<Subject> subjectSearchedForUpdating = this.repository.findById(id);
             if (subjectSearchedForUpdating.isPresent()) {
-                subjectSearchedForUpdating.get().setName(newSubjectData.getName());
+                subjectSearchedForUpdating.get().setName(newSubjectData.getClass());
                 return this.repository.save(subjectSearchedForUpdating.get());
             } else {
                 throw new Exception(APIMessages.ERROR_SUBJECT_NOT_FOUND.getMessage());
